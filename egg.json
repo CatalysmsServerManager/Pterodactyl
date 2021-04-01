@@ -1,0 +1,176 @@
+{
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PTERODACTYL PANEL - PTERODACTYL.IO",
+    "meta": {
+        "version": "PTDL_v1",
+        "update_url": null
+    },
+    "exported_at": "2021-03-28T13:45:41+00:00",
+    "name": "CSMM",
+    "author": "support@bantr.app",
+    "description": null,
+    "features": null,
+    "images": [
+        "csmm\/csmm-pterodactyl:latest"
+    ],
+    "file_denylist": [],
+    "startup": "cd \/usr\/src\/app && npm run db:migrate && CSMM_PORT={{SERVER_PORT}} npm start",
+    "config": {
+        "files": "{}",
+        "startup": "{\r\n    \"done\": \"Server lifted in `\/usr\/src\/app`\",\r\n    \"userInteraction\": []\r\n}",
+        "logs": "{}",
+        "stop": "^C"
+    },
+    "scripts": {
+        "installation": {
+            "script": "#!\/bin\/bash\r\nset -ex\r\n\r\nuseradd -d \/home\/container -m container -s \/bin\/bash\r\n\r\n[ ! -d \/mnt\/server ] && mkdir \/mnt\/server\r\n[ ! -d \/mnt\/server\/redis ] && mkdir \/mnt\/server\/redis\r\n\r\n## own server to container user\r\nchown container: \/mnt\/server\/\r\n\r\necho \"Job's Done\"",
+            "container": "node:14-buster-slim",
+            "entrypoint": "bash"
+        }
+    },
+    "variables": [
+        {
+            "name": "Tier",
+            "description": "The donation tier of the CSMM instance.",
+            "env_variable": "CSMM_DONATOR_TIER",
+            "default_value": "enterprise",
+            "user_viewable": true,
+            "user_editable": false,
+            "rules": "required|string|max:20"
+        },
+        {
+            "name": "Hostname",
+            "description": "Your server name, this will decide how you access your server via the browser. If you want to change this, please create a support ticket",
+            "env_variable": "CSMM_HOSTNAME",
+            "default_value": "yourserver",
+            "user_viewable": true,
+            "user_editable": false,
+            "rules": "required|regex:\/https:\\\/\\\/\\w*\\.csmm\\.xyz\/"
+        },
+        {
+            "name": "Log count",
+            "description": "How many logs CSMM will gather per request",
+            "env_variable": "CSMM_LOG_COUNT",
+            "default_value": "50",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|integer|min:20|max:500"
+        },
+        {
+            "name": "Admins",
+            "description": "Comma separated list of steam IDs for users that get extended control",
+            "env_variable": "CSMM_ADMINS",
+            "default_value": "76561198028175941",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required"
+        },
+        {
+            "name": "Steam API key",
+            "description": "Retrieve from https:\/\/steamcommunity.com\/dev\/apikey",
+            "env_variable": "API_KEY_STEAM",
+            "default_value": "https:\/\/steamcommunity.com\/dev\/apikey",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string"
+        },
+        {
+            "name": "Redis connection",
+            "description": "",
+            "env_variable": "REDISSTRING",
+            "default_value": "redis:\/\/127.0.0.1:6379",
+            "user_viewable": false,
+            "user_editable": false,
+            "rules": "required|string"
+        },
+        {
+            "name": "Private instance",
+            "description": "If true, only people in CSMM_ADMINS can add servers",
+            "env_variable": "CSMM_PRIVATE_INSTANCE",
+            "default_value": "true",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required"
+        },
+        {
+            "name": "Log check interval",
+            "description": "CSMM checks for new events on your server in an interval, you can control how often via this variable. Unit is milliseconds",
+            "env_variable": "CSMM_LOG_CHECK_INTERVAL",
+            "default_value": "3000",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|integer|min:500|max:5000"
+        },
+        {
+            "name": "Loglevel",
+            "description": "The log level of CSMM. Possible values are 'info' or 'debug'",
+            "env_variable": "CSMM_LOGLEVEL",
+            "default_value": "info",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|in:info,debug"
+        },
+        {
+            "name": "Database connection info",
+            "description": "You can create a database via the panel. The general structure of this variable is\r\n\r\n mysql2:\/\/{{ USER }}:{{ PASSWORD }}@{{ DB IP }}:3306\/{{ DATABASE NAME }}\r\n\r\nReplace anything enclosed in {{ }} with your values",
+            "env_variable": "DBSTRING",
+            "default_value": "mysql2:\/\/{{ USER }}:{{ PASSWORD }}@{{ DB IP }}:3306\/{{ DATABASE NAME }}",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|regex:\/mysql2:.*\/"
+        },
+        {
+            "name": "Log directory",
+            "description": "Where the logs get stored",
+            "env_variable": "LOGGING_DIR",
+            "default_value": "\/home\/container\/logs",
+            "user_viewable": false,
+            "user_editable": false,
+            "rules": "required|string"
+        },
+        {
+            "name": "Discord bot token",
+            "description": "The Discord bot token. Can be retrieved from https:\/\/discord.com\/developers\/applications\/",
+            "env_variable": "DISCORDBOTTOKEN",
+            "default_value": "https:\/\/discord.com\/developers\/applications\/",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "string"
+        },
+        {
+            "name": "Discord client secret",
+            "description": "The Discord client secret, can be retrieved from https:\/\/discord.com\/developers\/applications\/",
+            "env_variable": "DISCORDCLIENTSECRET",
+            "default_value": "https:\/\/discord.com\/developers\/applications\/",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "string"
+        },
+        {
+            "name": "Discord client id",
+            "description": "The Discord client ID, can be retrieved from https:\/\/discord.com\/developers\/applications\/",
+            "env_variable": "DISCORDCLIENTID",
+            "default_value": "https:\/\/discord.com\/developers\/applications\/",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "string"
+        },
+        {
+            "name": "Discord owner ID",
+            "description": "A comma separated list of Discord IDs. These people will get admin rights to the Discord bot. Careful giving out this permission!",
+            "env_variable": "DISCORDOWNERIDS",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "string"
+        },
+        {
+            "name": "Import dir",
+            "description": "When this is set, CSMM will try to import json files from this directory.",
+            "env_variable": "CSMM_IMPORT_FROM_DIR",
+            "default_value": "\/home\/container\/import",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "string"
+        }
+    ]
+}
