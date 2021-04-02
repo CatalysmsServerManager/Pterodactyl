@@ -3,6 +3,8 @@ name: Docker
 on:
   push:
     branches: master
+  repository_dispatch:
+    types: [build_application]
 
 jobs:
   main:
