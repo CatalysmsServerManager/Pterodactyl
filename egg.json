@@ -134,7 +134,7 @@
             "default_value": "https:\/\/discord.com\/developers\/applications\/",
             "user_viewable": true,
             "user_editable": true,
-            "rules": "string"
+            "rules": ""
         },
         {
             "name": "Discord client secret",
@@ -143,7 +143,7 @@
             "default_value": "https:\/\/discord.com\/developers\/applications\/",
             "user_viewable": true,
             "user_editable": true,
-            "rules": "string"
+            "rules": ""
         },
         {
             "name": "Discord client id",
@@ -152,7 +152,7 @@
             "default_value": "https:\/\/discord.com\/developers\/applications\/",
             "user_viewable": true,
             "user_editable": true,
-            "rules": "string"
+            "rules": ""
         },
         {
             "name": "Discord owner ID",
@@ -161,7 +161,7 @@
             "default_value": "",
             "user_viewable": true,
             "user_editable": true,
-            "rules": "string"
+            "rules": ""
         },
         {
             "name": "Import dir",
@@ -169,7 +169,7 @@
             "env_variable": "CSMM_IMPORT_FROM_DIR",
             "default_value": "\/home\/container\/import",
             "user_viewable": true,
-            "user_editable": true,
+            "user_editable": false,
             "rules": "string"
         }
     ]
