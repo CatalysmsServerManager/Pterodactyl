@@ -32,6 +32,9 @@ VOLUME [ "/usr/src/app/.tmp" ]
 RUN chown -R 988:988 /usr/src/app/views
 VOLUME [ "/usr/src/app/views" ]
 
+RUN mkdir -p /usr/src/app/exports
+RUN chown -R 988:988 /usr/src/app/exports
+VOLUME [ "/usr/src/app/exports" ]
 
 USER container
 ENV USER=container HOME=/home/container
