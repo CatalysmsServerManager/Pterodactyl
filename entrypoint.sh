@@ -5,7 +5,7 @@ cd /home/container
 [ ! -d /home/container/logs ] && mkdir /home/container/logs
 
 echo "Starting Redis"
-redis-server --daemonize yes --dir /home/container/redis
+redis-server --daemonize yes --dir /home/container/redis --save "" --appendonly no
 
 # Replace Startup Variables
 MODIFIED_STARTUP=$(echo -e "${STARTUP}" | sed -e 's/{{/${/g' -e 's/}}/}/g')
