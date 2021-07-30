@@ -4,7 +4,7 @@
         "version": "PTDL_v1",
         "update_url": null
     },
-    "exported_at": "2021-03-28T13:45:41+00:00",
+    "exported_at": "2021-07-30T14:11:04+00:00",
     "name": "CSMM",
     "author": "support@bantr.app",
     "description": null,
@@ -44,7 +44,7 @@
             "default_value": "yourserver",
             "user_viewable": true,
             "user_editable": false,
-            "rules": "required|regex:\/https:\\\/\\\/\\w*\\.csmm\\.xyz\/"
+            "rules": "required|regex:\/https:\\\/\\\/\\w*\\.\/"
         },
         {
             "name": "Log count",
@@ -134,7 +134,7 @@
             "default_value": "https:\/\/discord.com\/developers\/applications\/",
             "user_viewable": true,
             "user_editable": true,
-            "rules": ""
+            "rules": "string"
         },
         {
             "name": "Discord client secret",
@@ -143,7 +143,7 @@
             "default_value": "https:\/\/discord.com\/developers\/applications\/",
             "user_viewable": true,
             "user_editable": true,
-            "rules": ""
+            "rules": "string"
         },
         {
             "name": "Discord client id",
@@ -152,7 +152,7 @@
             "default_value": "https:\/\/discord.com\/developers\/applications\/",
             "user_viewable": true,
             "user_editable": true,
-            "rules": ""
+            "rules": "string"
         },
         {
             "name": "Discord owner ID",
@@ -161,7 +161,7 @@
             "default_value": "",
             "user_viewable": true,
             "user_editable": true,
-            "rules": ""
+            "rules": "string"
         },
         {
             "name": "Import dir",
@@ -169,8 +169,26 @@
             "env_variable": "CSMM_IMPORT_FROM_DIR",
             "default_value": "\/home\/container\/import",
             "user_viewable": true,
+            "user_editable": true,
+            "rules": "string"
+        },
+        {
+            "name": "SENTRY_DSN",
+            "description": "",
+            "env_variable": "SENTRY_DSN",
+            "default_value": "",
+            "user_viewable": false,
             "user_editable": false,
             "rules": "string"
+        },
+        {
+            "name": "Server sent events enabled",
+            "description": "",
+            "env_variable": "SSE_ENABLED",
+            "default_value": "true",
+            "user_viewable": true,
+            "user_editable": false,
+            "rules": "required|string|max:20"
         }
     ]
 }
