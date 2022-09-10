@@ -1,11 +1,11 @@
 # ----------------------------------
 # Pterodactyl Dockerfile
-# This image includes nodejs 14 and Redis
+# This image includes nodejs 16 and Redis
 # Redis is available to the application inside the container on default connection settings
 # Adapted from https://github.com/parkervcp/images/tree/debian/nodejs-14
 # ----------------------------------
 FROM catalysm/csmm:latest as csmm
-FROM node:14-buster-slim
+FROM node:16-buster-slim
 
 RUN apt-get update \
     && apt-get -y install build-essential wget tcl \
